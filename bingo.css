@@ -1,0 +1,105 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: solid 3px;
+	
+}
+
+tr, td {
+	border: solid 2px;
+}
+
+
+.tieude {
+	text-align: center;
+	display: block;
+	margin-top: 30px; 
+}
+
+h1 {
+	font-size: 50px;
+}
+
+h5 {
+	font-size: 20px;
+}
+
+.tables {
+	display: grid;
+	grid-template-columns: repeat(2,minmax(300px,1fr));
+	justify-items: center;
+	grid-row-gap: 2em;
+}
+.SmallTable {
+	width: 488px;
+	margin: 1em;
+	/* height: auto; */
+}
+
+.SmallTable h2 {
+	margin-bottom: 10px; 
+}
+
+.random {
+	width: 30%;
+	margin: auto;
+}
+
+.random span {
+	font-size: 100px; 
+	font-weight: bold;
+	display: block;
+	text-align: center;
+}
+
+.random button {
+	display: block;
+	margin: auto;
+	font-size: 30px;
+	padding: 2px;
+}
+
+.nhap {
+	width: 25%;
+	margin: auto;
+}
+
+.nhap table {
+	width: 100%;
+}
+
+.nhap input {
+	width: 98%;
+}
+
+.input .label {
+	width: 65%;
+}
+
+.nhap h4 {
+	font-size: 20px;
+}
+
+.nhap button {
+	display: block;
+	margin: auto;
+	margin-top: 40px;
+	font-size: 20px;
+	padding: 2px;
+}
+
+.nhap table, tr, td {
+	padding: 0px;
+}
+.tables td{
+	width: 50px;
+	height:50px;
+	text-align:center;
+	font-weight: bold;
+	font-size: 20px;
+}
