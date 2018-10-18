@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Trò chơi Bingo</title>
+	<link rel="stylesheet" type="text/css" href="bingo.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+</head>
+<body>
+	<script type="text/javascript">
+
+		function creatNumber(min, max) {
+			return Math.floor(Math.random() * (max + 1 - min) + min) ;
+		}
+
+		var arrayCheck = new Array();
+		function random() {
+			var max = $('#SoLuongSo').val();
+			if (arrayCheck.length < parseInt(max)) {
+				while(true) {
+					var random = creatNumber(1, parseInt(max));
+					if (!checkIsset(arrayCheck, random)) {
+						arrayCheck.push(random);
+						$('#random').text(random);
+						break;
+					}
+				}
+			} else {
+				$('#random').text('Kết Thúc');
+			}		
+			
+		}
+
+		function checkIsset(arr, number) {
+			var check = 0;
+			for (var i = 0; i < arr.length; i++) {
+				if (parseInt(arr[i]) == parseInt(number)) {
+					check++;
+				}
+			}
+			return (check == 0) ? false : true ;
+		}
+
+		function arrayRandom(max) {
+			var arr = new Array();
+			for (var i = 0; i < 25; i++) {
+				while(true) {
+					var random = creatNumber(1, parseInt(max));
+					if (!checkIsset(arr, random)) {
+						arr.push(random);
+						break;
+					}
+				}
+			}
+			return arr;
+		}
+
+		function creat() {
+			arrayCheck = [];
+			$('.tables').text("");
+			var NumberOfPeople = $('#SoLuongNguoi').val();
+			var NumberOfNumbers = $('#SoLuongSo').val();
+			if (NumberOfPeople > 0 && NumberOfNumbers >= 25) {
+				for (var i = 0; i < NumberOfPeople; i++) {
+					var arr = arrayRandom(NumberOfNumbers);
+					var string = '<div class="SmallTable"> <h2>Bảng ' + (i + 1) + '</h2> <table>' ;
+					var count = 0;
+					for (var k = 0; k < 5; k++) {
+						string += '<tr>';
+						for (var j = 0; j < 5; j++) {
+							string += '<td>';
+							if (count == 12) {
+								string += "<span style='font-size: 30px;'>x</span>";
+								count++;
+							} else {
+								string += arr[count++];
+							}
+							
+							string += '</td>';
+						}
+						string +='</tr>';
+					}
+					string += '</table> </div>';
+					$('.tables').append(string);
+				}
+			} else {
+				alert('Số lượng số lớn hơn là 25 và số lượng người phải lớn 0 !!')
+			}		
+		}
+	</script>
+
+	<div class="tieude">
+		<h1>Trò Chơi Bingo</h1>
+	</div>
+	
+	<div class="nhap">
+		<table class="input">
+			<tr>
+				<td class="label"><h4>Số lượng người tham gia: </h4></td>
+				<td><input required="required" type="number" id="SoLuongNguoi"></td>
+			</tr>
+
+			<tr>
+				<td><h4>Số lượng số: </h4></td>
+				<td><input required="required" type="number" id="SoLuongSo"></td>
+			</tr>
+		</table>
+		
+		<button class="button" onclick="creat()">Bắt Đầu</button>
+	</div>
+
+	<div class="random">
+		<span id="random">0</span>
+		<button onclick="random()">Random</button>
+	</div>
+
+	<div class="tables">
+		<!-- có gì đó -->
+	</div>
+</body>
+</html>
