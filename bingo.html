@@ -15,13 +15,15 @@
 
 		var arrayCheck = new Array();
 		function random() {
+			$('.tables').text("");
 			var max = $('#SoLuongSo').val();
 			if (arrayCheck.length < parseInt(max)) {
 				while(true) {
 					var random = creatNumber(1, parseInt(max));
 					if (!checkIsset(arrayCheck, random)) {
 						arrayCheck.push(random);
-						$('#random').text(random);
+						$('.random').append('<audio src="a.mp3" autoplay = "autoplay" style = "display: none;"></audio>');
+						CountEffect(max, random);
 						break;
 					}
 				}
@@ -29,6 +31,20 @@
 				$('#random').text('Kết Thúc');
 			}		
 			
+		}
+
+		function CountEffect(max, random) {
+			var time = 150;
+			var interval_obj = setInterval(function() {
+				$('#random').text(creatNumber(1, parseInt(max)));
+				time += 150;
+			    if (time >= 22000) {
+					clearInterval(interval_obj);
+					$('#random').text(random);
+					$('.result').prepend("<span>" + random + "</span>");
+			    }
+			    
+			}, time);
 		}
 
 		function checkIsset(arr, number) {
@@ -58,9 +74,14 @@
 		function creat() {
 			arrayCheck = [];
 			$('.tables').text("");
+			$('.random').text("");
+			$('.result').text("");
+			
 			var NumberOfPeople = $('#SoLuongNguoi').val();
 			var NumberOfNumbers = $('#SoLuongSo').val();
 			if (NumberOfPeople > 0 && NumberOfNumbers >= 25) {
+				string = '<span id="random">0</span><div class="ButtonRandom"><button onclick="random()">Random</button></div>';
+				$('.random').append(string);
 				for (var i = 0; i < NumberOfPeople; i++) {
 					var arr = arrayRandom(NumberOfNumbers);
 					var string = '<div class="SmallTable"> <h2>Bảng ' + (i + 1) + '</h2> <table>' ;
@@ -70,7 +91,7 @@
 						for (var j = 0; j < 5; j++) {
 							string += '<td>';
 							if (count == 12) {
-								string += "<span style='font-size: 30px;'>x</span>";
+								string += "<span style='font-size: 30px;'></span>";
 								count++;
 							} else {
 								string += arr[count++];
@@ -87,6 +108,8 @@
 				alert('Số lượng số lớn hơn là 25 và số lượng người phải lớn 0 !!')
 			}		
 		}
+
+		
 	</script>
 
 	<div class="tieude">
@@ -97,21 +120,24 @@
 		<table class="input">
 			<tr>
 				<td class="label"><h4>Số lượng người tham gia: </h4></td>
-				<td><input required="required" type="number" id="SoLuongNguoi"></td>
+				<td><input type="number" id="SoLuongNguoi"></td>
 			</tr>
 
 			<tr>
 				<td><h4>Số lượng số: </h4></td>
-				<td><input required="required" type="number" id="SoLuongSo"></td>
+				<td><input type="number" id="SoLuongSo"></td>
 			</tr>
 		</table>
 		
-		<button class="button" onclick="creat()">Bắt Đầu</button>
+		<button class="button" onclick="creat()">Bắt đầu</button>
 	</div>
 
 	<div class="random">
-		<span id="random">0</span>
-		<button onclick="random()">Random</button>
+		<!-- có gì đó -->
+	</div>
+
+	<div class="result">
+		<!-- có gì đó -->
 	</div>
 
 	<div class="tables">
@@ -119,3 +145,5 @@
 	</div>
 </body>
 </html>
+
+<script type="text/javascript"></script>
