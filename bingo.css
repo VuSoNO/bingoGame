@@ -1,71 +1,20 @@
-*{
-	margin: 0px;
+* { 
 	padding: 0px;
+	margin: 0px;
 }
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-	border: solid 3px;
-	
-}
-
-tr, td {
-	border: solid 2px;
-}
-
 
 .tieude {
-	text-align: center;
-	display: block;
-	margin-top: 30px; 
+	width: 100%;
+	height: 100%;
 }
 
-h1 {
+.tieude h1 {
+	text-align: center;
 	font-size: 50px;
 }
 
-h5 {
-	font-size: 20px;
-}
-
-.tables {
-	display: grid;
-	grid-template-columns: repeat(2,minmax(300px,1fr));
-	justify-items: center;
-	grid-row-gap: 2em;
-}
-.SmallTable {
-	width: 488px;
-	margin: 1em;
-	/* height: auto; */
-}
-
-.SmallTable h2 {
-	margin-bottom: 10px; 
-}
-
-.random {
-	width: 30%;
-	margin: auto;
-}
-
-.random span {
-	font-size: 100px; 
-	font-weight: bold;
-	display: block;
-	text-align: center;
-}
-
-.random button {
-	display: block;
-	margin: auto;
-	font-size: 30px;
-	padding: 2px;
-}
-
 .nhap {
-	width: 25%;
+	width: 350px;
 	margin: auto;
 }
 
@@ -96,10 +45,141 @@ h5 {
 .nhap table, tr, td {
 	padding: 0px;
 }
-.tables td{
-	width: 50px;
-	height:50px;
-	text-align:center;
+
+.random {
+	width: 30%;
+	margin: auto;
+}
+
+.random span {
+	font-size: 100px; 
 	font-weight: bold;
+	display: block;
+	text-align: center;
+}
+
+.random button {
+	display: block;
+	margin: auto;
+	font-size: 30px;
+	padding: 2px;
+}
+
+.tables {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.SmallTable {
+	width: 500px;
+	height: 500px;
+	padding: 50px;
+	text-align: center;
+}
+
+.SmallTable h2 {
+	margin-bottom: 10px;
+}
+
+.SmallTable table{
+	width: 500px;
+	height: 500px;
+	border-collapse: collapse;
+	border: solid 3px;
+}
+
+.SmallTable tr {
+	border: solid 2px;
+	width: 100px;
+	height: 100px;
+}
+
+.SmallTable td {
+	
+	border: solid 2px;
 	font-size: 20px;
+}
+
+.result {
+	width: 80%;
+	height: auto;
+	border-top: solid 2px;
+	border-bottom: solid 2px;
+	margin: auto;
+	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.result span {
+	display: block;
+	width: 4.8%;
+	height: 70px;
+	font-size: 60px;
+	margin: 0px 20px;
+	text-align: center;
+}
+
+
+@media only print {
+
+	.nhap {
+		display: none;
+	}
+
+	.random {
+		display: none;
+	}
+
+	.tieude {
+		display: none;
+	}
+
+	.tables {
+
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.result {
+		display: none;
+	}
+
+	.SmallTable {
+		width: 50%;
+		height: 358px;
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.SmallTable table{
+		margin: auto;
+	}
+
+	.SmallTable h2 {
+		width: 100%;
+		height: 30px;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	.SmallTable table {
+		width: 320px;
+		height: 320px;
+	}
+
+	.SmallTable td{
+		width: 61px;
+		height: 61px;
+	}
+	
+	.SmallTable tr{
+		width: 61px;
+		height: 61px;
+	}
+
 }
